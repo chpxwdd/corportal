@@ -1,0 +1,112 @@
+<?php print $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+	<?php
+	print $this->headTitle('Sodis Corporate Portal')
+		->setSeparator(' - ')
+		->setAutoEscape(false);
+
+	print $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')
+		->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+
+	print $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+		->prependStylesheet($this->basePath() . '/css/theme/grid.css')
+		->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
+//		->prependStylesheet($this->basePath() . '/library/bootstrap/css/bootstrap.css')
+//		->prependStylesheet($this->basePath() . '/library/bootstrap/css/bootstrap-theme.css')
+//		->prependStylesheet($this->basePath() . '/library/bootstrap/css/docs.css')
+		->prependStylesheet($this->basePath() . '/css/style.css')
+		->prependStylesheet($this->basePath() . '/css/layout.css')
+		->prependStylesheet($this->basePath() . '/library/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css');
+
+	print $this->headScript()
+		->prependFile($this->basePath() . '/library/zf2-doctrine-autocomplete.js')
+		->prependFile($this->basePath() . '/library/jquery.maskedinput/dist/jquery.maskedinput.js', 'text/javascript')
+		->prependFile($this->basePath() . '/js/module/core/partial/grid.js', 'text/javascript')
+		->prependFile($this->basePath() . '/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js', 'text/javascript')
+		->prependFile($this->basePath() . '/library/bootstrap/js/bootstrap.js')
+		->prependFile($this->basePath() . '/library/jquery-ui/jquery-ui.min.js')
+		->prependFile($this->basePath() . '/library/jquery/jquery-2.1.0.min.js')
+		->prependFile($this->basePath() . '/library/respond/src/respond.js', 'text/javascript')
+	;
+	?>
+    </head>
+    <body>
+	<!-- BEGIN page header  -->
+	<header class="hidden-xs"><?php include 'templates/header.phtml' ?></header>
+	<!-- END page header -->
+
+	<!-- BEGIN page navigation -->
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation"><?php include 'templates/nav.phtml' ?></nav>	
+	<!-- END page navigation -->
+
+	<!-- BEGIN page content -->
+	<section>
+	    <div class="container">
+		<div class="row">
+		    <div class="col-sm-4 col-md-3">
+			<!-- BEGIN region sidebar --> 
+			<section class="sidebar">
+			    <!-- BEGIN block search --> 
+			    <aside><?php include 'templates\block\search.phtml'; ?></aside>
+			    <!-- END block search --> 
+
+			    <!-- BEGIN block mainmenu --> 
+			    <aside><?php include 'templates\block\mainmenu.phtml'; ?></aside>
+			    <!-- END block mainmenu --> 
+
+			    <!-- BEGIN block action viemodels --> 
+			    <?php if ($this->placeholder('sidebar')): ?>
+    			    <aside><?php print $this->placeholder('sidebar'); ?></aside>
+			    <?php endif; ?>
+			    <!-- END block action viemodels --> 
+
+			</section>
+			<!-- END region sidebar -->
+
+		    </div><!-- /col-sm-4 .... -->
+		    <div class="col-sm-8 col-md-9">
+
+			<section class="content">
+
+			    <!-- BEGIN section breadcrumbs -->
+			    <?php if ($breadcrumbs = $this->navigation()->breadcrumbs()->setPartial("partial/breadcrumb.phtml")->render()): ?>
+    			    <nav><?php print $breadcrumbs; ?></nav>
+			    <?php endif; ?>
+			    <!-- END section breadcrumbs -->
+
+			    <!-- BEGIN section messages -->
+			    <?php if ($this->flashMessages): ?>
+    			    <section><?php include 'templates/messages.phtml'; ?></section>
+			    <?php endif; ?>
+			    <!-- END section messages -->
+
+			    <!-- BEGIN section navigation -->
+			    <?php if ($navigation = trim($this->navigation()->menu()->setUlClass('nav nav-pills pull-right')->setMinDepth(1)->setMaxDepth(2)->setRenderParents(false)->setOnlyActiveBranch(true)->render())): ?>
+    			    <nav><?php print $navigation ?><div class="clearfix"></div></nav>
+			    <?php endif; ?>
+			    <!-- END section navigation -->
+
+			    <!-- BEGIN section title -->
+			    <?php if ($this->placeholder('title') || $this->placeholder('lead')): ?>
+    			    <header class="page-header"><?php include 'templates/title.phtml' ?></header>
+				<?php endif; ?>
+			    <!-- END section title -->
+
+			    <!-- BEGIN module content -->		 
+			    <article><?php print $this->content ?></article>
+			    <!-- END module content -->
+			</section>
+
+			<?php print $this->inlineScript()->appendFile('/js/init.js'); ?>
+		    </div><!-- /col-lg... -->
+		</div><!-- /row -->
+	    </div><!-- /container -->
+	</section>
+	<!-- END page content -->
+
+	<?php print $this->inlineScript(); ?>
+    </body>
+</html>
+

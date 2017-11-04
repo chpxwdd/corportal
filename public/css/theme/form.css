@@ -1,0 +1,99 @@
+form fieldset ul > li {
+    color: #818181;
+    font-style: italic;
+    font-weight: 300;
+    list-style: outside none none;
+}
+form fieldset ul {
+    font-size: 85%;
+    line-height: 1;
+    list-style: outside none none;
+    margin-left: 33.3%;
+    padding: 0;
+}
+form fieldset {
+    color: #454545;
+    margin-bottom: 8px;
+}
+form fieldset > fieldset {
+}
+form fieldset > legend {
+    border: none;
+    color: #822;
+    font-size: 15px;
+    font-family: Roboto;
+    font-weight: 300;
+    line-height: 1;
+    text-shadow: 0.25px 0.25px 0 #454545;
+    text-transform: uppercase;
+}
+form fieldset > label {
+    width: 100%;
+}
+form fieldset > label.form-group {
+    margin-bottom: 2px;
+}
+form fieldset > label.checkbox span {
+    font-weight: 500;
+    margin-top: 2px;
+}
+form fieldset > label.form-group span {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    color: #311;
+    float: left;
+    font-weight: 300;
+    margin-bottom: 2px;
+    padding: 4px 8px;
+    text-align: right;
+    text-shadow: 0.25px 0.25px 0 #000;
+    text-transform: capitalize;
+    width: 33.3%;
+}
+form fieldset label.form-group span:after {
+    content: ":";
+}
+form fieldset label.checkbox {
+    margin: 8px 0 12px;
+    padding-left: 33.3%;
+}
+form fieldset label.checkbox input[type="checkbox"] {
+    margin: 2px 4px 0 0;
+}
+form fieldset > label.form-group select.form-control, form fieldset > label.form-group input.form-control {
+    font-weight: 400;
+    width: 66.6%;
+}
+form fieldset > input[type="button"], form fieldset > input[type="submit"] {
+    margin-left: 33.3%;
+    margin-top: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+aside form > fieldset {
+    width: 100%;
+}
+form fieldset .datetimepicker {
+    padding: 4px !important;
+}
+
+.form-inline button,
+.form-inline input[type=submit],
+.form-inline select {
+    margin-bottom: 0;
+}
+.form-inline input[type=submit] {
+    margin-left: 4px;
+    margin-top: 0;
+
+}
+
+.form-inline .form-control {
+    margin-right: 4px
+}
+.form-inline label {
+    width: auto;
+}
+.form-inline label.form-group span{
+    float:none;
+}

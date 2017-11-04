@@ -1,0 +1,11 @@
+<?php
+$this->placeholder('sidebar')->captureStart();
+?>
+<h3>Rates parsers:</h3>
+<ul class="nav nav-list">
+    <li><a href="/currency/rates/view"><span class="glyphicon glyphicon-link"></span>www.exhangerates.com</a></li>
+</ul>
+<?php
+$this->placeholder('sidebar')->captureEnd();
+$this->placeholder('sidebar')->setPrefix("<aside class='well'>")->setIndent(0)->setPostfix("</aside>");
+?>

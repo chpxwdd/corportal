@@ -1,0 +1,7 @@
+.table a.btn-link {
+    padding: 0 8px;
+    color: #822;
+    cursor: pointer;
+    font-weight: 500;
+    z-index: 2;
+}

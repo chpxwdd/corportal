@@ -1,0 +1,65 @@
+
+<?php
+if (FALSE === $grid instanceof Core\Helper\Partial\Grid) :
+    return '';
+endif
+?>
+
+<div class='panel panel-default'>
+    <?php if ($grid->getCaption()) : ?>
+        <div class="panel-heading"><h3 class="panel-title"><?= $grid->getCaption() ?></h3></div>
+    <?php endif; ?>
+
+    <?php if ($grid->getActions()) : ?>
+        <div class="panel-heading"><?php foreach ($grid->getActions() as $link) print $link->render(); ?> </div>
+    <?php endif; ?>
+
+    <div class="panel-body">
+	<table id="grid-<?= $id ?>" class="<?= $grid->getClass() ?>" >
+	    <?php if ($grid->getHeaders()): ?>
+    	    <thead>
+    		<tr>
+			<?php
+			
+			if ($grid->getRowHeader() === TRUE):
+			    sprintf('<th class="text-muted" width="20">%s</th>', $rowHeaderCaption = NULL);
+			endif;
+			
+			foreach ($grid->getHeaders() as $header):
+			    if (is_array($header)):
+				print sprintf('<th>%s</th>', $header['title']);
+			    elseif (is_string($header)):
+				print sprintf('<th>%s</th>', $header);
+			    endif;
+			endforeach;
+			?>
+    		</tr>
+    	    </thead>
+	    <?php endif; ?>
+	    <tbody>
+		<?php foreach ($grid->getRowset() as $rowId => $rowData): ?>
+    		<tr id="<?= $rowId ?>">
+
+			<?php if ($grid->getRowHeader() === TRUE): ?>
+			    <th><small class="text-muted"><span class="glyphicon glyphicon-chevron-right"></span></small></th>
+			<?php endif; ?>
+
+			<?php
+			foreach ($rowData as $cell):
+			    printf('<td>%s</td>', $cell);
+			endforeach;
+			?>
+    		</tr>
+		<?php endforeach; ?>
+	    </tbody>
+
+
+	</table>
+    </div>
+
+
+    <?php if (!empty($this->pager)): ?>
+        <div class="panel-footer text-right"><?php print $this->pager; ?></div>
+    <?php endif; ?>
+
+</div>

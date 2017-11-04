@@ -1,0 +1,19 @@
+<?php
+
+$paginate = $this->paginationControl($this->paginator, 'Sliding', array('partial/paginator.phtml', 'index'), array(
+  'route' => 'contact/person',
+  'order_by' => $this->order_by,
+  'order' => $this->order)
+);
+
+$grid = $this->partial('partial/grid.phtml', array(
+  'panel' => TRUE,
+  'grid' => $this->grid,
+  'pager' => $paginate,
+  'order_by' => $this->order_by,
+  'order' => $this->order)
+);
+
+print $grid;
+
+?>

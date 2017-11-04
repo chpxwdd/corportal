@@ -1,0 +1,33 @@
+<?php
+/**
+ * 
+ * @param $form 
+ * 
+ * view partial helper script 
+ * 'partial/form/horizontal.phtml'
+ */
+?>
+
+<?php if ($form instanceof \Zend\Form\Form):?>
+
+    <?php foreach ($form as $formRow):?>
+    
+	<?php if ($formRow instanceof \Zend\Form\Fieldset || $item instanceof \Zend\Form\Element\Collection):?>
+	    
+	    <?php print $formRow->getName()?>
+	    
+	    <?php foreach ($formRow as $formElement):?>
+		<div class="form-group">
+		<?php print $formRow->getAttribute('type')?>
+		</div>    
+	    <?php endforeach?>
+
+
+	<?php elseif ($formRow instanceof \Zend\Form\Element):?>
+
+		<?php print $formRow->getAttribute('type')?>
+
+	<?php endif ?>
+
+    <?php endforeach ?>
+<?php endif ?>

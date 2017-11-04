@@ -1,0 +1,9 @@
+<?php
+
+$form = $this->form;
+$form->setAttribute('action', $this->url('staff/department', array('action' => 'add')));
+$form->prepare();
+
+print $this->form()->openTag($form);
+print $this->formCollection($form);
+print $this->form()->closeTag();

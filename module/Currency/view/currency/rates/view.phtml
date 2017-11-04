@@ -1,0 +1,29 @@
+<?php
+/**
+ * View Template for a  route:\\currency\rates\view  
+ * 
+ * @param \Zend\View\Model\ViewModel $this
+ * @param \Zend\Form\Form $form Filter form for parse
+ * @package Currency
+ * @version 0.1
+ * @author Alexander V. Cherepanov <chpxwdd@gmail.com>
+ */
+$this->inlineScript()->appendFile('/js/module/currency/rate.js');
+//$this->placeholder('sidebar')->captureStart();
+//$this->placeholder('sidebar')->captureEnd();
+//$this->placeholder('sidebar')->setPrefix('<aside>')->setIndent(0)->setPostfix('</aside>');
+?>
+<div class='row'>
+    <div class='col-lg-4'>
+	<?php
+	$form = $this->form;
+	$form->prepare();
+	print $this->form()->openTag($form);
+	print $this->formCollection($form);
+	print $this->form()->closeTag();
+	?>
+    </div>
+    <div class='col-lg-8'>
+	<div id='parse_result'><div id='parse_result_accordion' class='panel-group panel-collapse' role='tablist' aria-multiselectable='true'></div></div>
+    </div>
+</div>

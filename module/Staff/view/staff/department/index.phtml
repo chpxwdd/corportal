@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * View script for a department index controller
+ * 
+ */
+foreach ($this->rowset as $department):
+
+    $arrributes = array();
+    $id = $department->getId();
+    
+    $arrributes['class'] = 'list-group-item';
+    $arrributes['href'] = $id > 1 ? $this->url() . '/edit' . $id : 'javascript:void(0)';
+    
+    $body = (string) '';
+    $body .= sprintf('<h4>%s</h4>', $department->getName());
+    $body .= sprintf('<p class="text-muted">id: %s, parent: %s</p>', $department->getId(), $department->getParent() ? $department->getParent()->getName() : 'top');
+
+    if ($department->getParent()):
+	$body .= sprintf('<p>%s</p>', $department->getParent()->getName());
+    endif;
+    
+
+    print $body;
+
+endforeach;
+?>

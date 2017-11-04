@@ -1,0 +1,23 @@
+<?php
+
+$widget = $this->partial('partial/grid.phtml', array(
+    'panel' => TRUE,
+    'grid' => $this->grid,
+    'pager' => $this->paginationControl($this->paginator, 'Sliding', array('partial/paginator.phtml', 'index'), array(
+	'route' => 'admin/role',
+	'order_by' => $this->order_by,
+	'order' => $this->order
+    )),
+    'order_by' => $this->order_by,
+    'order' => $this->order));
+
+//
+//$form = $this->form;
+//$form->prepare();
+//
+//echo $this->form()->openTag($form);
+//echo $this->formCollection($form);
+//echo $this->form()->closeTag();
+
+print $widget;
+?>

@@ -1,0 +1,72 @@
+<?php
+/**
+ * 
+ * $this->parseRates;
+ * $this->currencyTo;
+ * $this->arrCurrencyFrom;
+ */
+$abbrTo = $this->currencyTo->getAbbr();
+$titleTo = $this->currencyTo->getTitle();
+?>
+<div class="panel panel-default" id="grid_rate_<?= $abbrTo ?>">
+    <div class="panel-heading panel-collapse" role="tabpanel" aria-labelledby="heading_accordion_<?= $abbrTo ?>">
+	<h3 class="panel-title text-primary">
+	    <a data-toggle="collapse" data-parent="#parse_result_accordion" aria-expanded="true" aria-controls="collapse_accordion_<?= $abbrTo ?>"
+	       href="#collapse_accordion_<?= $abbrTo ?>" class="collapsed"><?= "$abbrTo <small>$titleTo</small>" ?></a>	    
+	</h3>
+    </div>
+    <div id="collapse_accordion_<?= $abbrTo; ?>" class="collapse" role="tabpanel" aria-labelledby="heading_accordion_<?= $abbrTo ?>">
+	<button class="btn btn-link " id="save_rate_<?= $abbrTo ?>">
+	    <span class="glyphicon glyphicon-floppy-save"></span> Save
+	</button>
+	<hr>
+	<table class="table table-condensed table-hover table-responsive">
+	    <thead>
+		<tr>
+		    <th>Date</th>
+		    <?php foreach ($this->arrCurrencyFrom as $currencyFrom): ?>
+    		    <th width="120px"><?= $currencyFrom->getTitle() ?></th>
+		    <?php endforeach; ?>
+		</tr>
+	    </thead>
+	    <tbody>
+		<?php
+		foreach ($this->rates as $date => $row):
+		    $arr = explode('.', $date);
+		    $datetime = new \DateTime((string) ($arr[2] . "/" . $arr[1] . "/" . $arr[0]));
+		    $dbRate = $ratesRepo->findOneByDate($abbrTo, $datetime->format("Y-m-d"));
+		    $founded = count($dbRate->getResult());
+		    if ($founded == 0):
+			$class = 'text-warning';
+		    elseif ($founded == 1):
+			$resRate = $dbRate->getSingleResult();
+			$class = 'text-success';
+		    else:
+			continue;
+		    endif;
+		    ?>
+    		<tr>
+    		    <td class="rate-date"><?= $datetime->format("d.m.Y"); ?></td>
+			<?php
+			foreach ($row as $abbr => $rate):
+			    if ($founded == 1):
+				switch ($abbr):
+				    case 'USD':
+					$rate = ($resRate->getUsd() == 1) ? "1.000000" : $resRate->getUsd();
+					break;
+				    case 'EUR':
+					$rate = ($resRate->getEur() == 1) ? "1.000000" : $resRate->getEur();
+					break;
+				    default: break;
+				endswitch;
+			    endif;
+			    ?>
+			    <td class="<?= $class . " rate-val-" . $abbr ?>"><?= $rate ?></td>
+			<?php endforeach; ?>
+    		</tr>
+		<?php endforeach; ?>
+	    </tbody>
+	</table>
+	
+    </div>
+</div>

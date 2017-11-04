@@ -1,0 +1,35 @@
+/**
+ * table
+ */
+
+table.table
+{
+
+}
+table.table > thead > tr > th,
+table.table > tbody > tr > th:first-of-type{
+    background-color: #eee;
+/*    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eee', endColorstr='#fff');
+    background-image: -webkit-gradient(linear, left bottom, left top, from(#eee), to(#fff));
+    background-image: -webkit-linear-gradient(bottom, #eee, #fff);
+    background-image: -moz-linear-gradient(bottom, #eee, #fff);
+    background-image: -ms-linear-gradient(bottom, #eee, #fff);
+    background-image: -o-linear-gradient(bottom, #eee, #fff);
+    background-image: linear-gradient(bottom, #eee, #fff);*/
+}
+.alert {
+    padding: 0!important;
+    border-left: 28px solid rgba(0, 0, 0, 0.05);
+}
+.alert span {
+    padding: 6px 4px;
+}
+.alert ul {
+    border-left: 1px solid rgba(0, 0, 0, 0.10);
+    margin-left: 28px;
+    padding: 8px;
+}
+.alert ul li
+{
+    line-height: 22px 
+}

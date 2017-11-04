@@ -1,0 +1,36 @@
+<?php
+/**
+ * Index page Lunnch module view script
+ * 
+ * @param string @title page title text
+ * @param string @lead page description text
+ * @author Alexander Cherepanov <chpxwdd@gmail.com>
+ * @package Lunch
+ * @see Lunch\Controller\IndexController
+ */
+?>
+
+<table id="tbl-menu" class="table table-condensed table-responsive table-striped">
+    <thead>
+	<tr>
+	    <th width="100">Начало</th>
+	    <th width="100">Окончание</th>
+	    <th>Дотация&nbsp;<small class="text-muted">(руб.)</small></th>
+	</tr>
+    </thead>
+    <tbody>
+	<?php foreach ($content as $week): ?>
+    	<tr id="<?= $week->getWeek() ?>">
+		<?php $dtStart = $week->getDoStart(new DateTimeZone('Europe/Moscow')); ?>
+    	    <td><?= $dtStart->format('d.m.Y') ?></td>
+		<?php $dtStart->add(new DateInterval('P' . (int) ($week->getCntDays() - 1) . 'D')); ?>
+    	    <td><?= $dtStart->format('d.m.Y') ?> </td>
+
+    	    <td><?= $week->getDotation() * $week->getCntDays() ?></td>
+    	</tr>
+	<?php endforeach; ?>
+    </tbody>
+</table>
+<div class="text-center">
+    <?php print $this->paginationControl($content, "sliding", array("partial/paginator.phtml", null), array("route" => "lunch/week")); ?>
+</div> 

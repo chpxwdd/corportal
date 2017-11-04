@@ -1,0 +1,51 @@
+@import url('theme/form.css');
+body{
+    min-width: 320px;	 
+    /*background-color: #fbf9f2;*/
+    padding: 0 0 48px!important
+}
+.sidebar aside {margin-bottom: 16px}
+body > nav {
+    margin-bottom: 16px!important; 
+}
+body > header {
+    background:url('../img/bg/grid-bg.png') repeat 0 0 rgba(128,53,51,1);
+    border-top: 2px solid #333;
+}
+body > header .container{
+    /*background:none repeat 0 0 rgba(128,53,51,.8);*/
+}
+body > header ul{
+    background:none repeat 0 0 rgba(255,252,252,.1);
+}
+
+.layout-container{
+    padding: 0 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color:rgba(255,252,252,1);
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.75)
+}
+
+/* for large desctop */
+section.content{
+    /*padding: 16px;*/
+    /*border: 1px solid #ccc;*/
+    /*background-color: #fefefe;*/
+}
+section.content > nav,
+section.content > aside,
+section.content > header,
+section.content > article,
+section.content > section,
+section.content > footer{
+    margin: 0 0 16px;
+}
+body > footer{font-size: 11px;line-height: 1;color:#454545}
+body > footer ul {padding: 0;list-style: none}
+body > footer ul > li {padding: 0;float: left}
+body > footer ul > li > a{color:inherit;font-weight: 500;text-transform: lowercase;;margin-bottom: 4px}
+body > footer ul > li > ul {padding: 0 0 0 8px;list-style: none}
+body > footer ul > li > ul > li{padding: 0;float: none}
+body > footer ul > li > ul > li > a{color:inherit;font-weight: 300;text-transform: lowercase;}
+

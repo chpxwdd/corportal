@@ -1,0 +1,15 @@
+<?php
+
+$form = $this->personForm;
+
+if (!($form instanceof \Contact\Form\PersonForm)) {
+    print "Ошибка";
+    return;
+}
+
+print $this->form()->openTag($form);
+print $this->formCollection($form);
+print $this->form()->closeTag();
+
+
+?>

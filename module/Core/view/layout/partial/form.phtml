@@ -1,0 +1,29 @@
+<?php
+/**
+ * 
+ * 
+ * @param Zend\Form\Form $form Standart form object
+ * @param Zend\View\Helper\Url $url Url ViewHelper
+ */
+$form = $this->form;
+$form->setAttribute('action', $this->url);
+$form->prepare();
+$elements = $this->form->formCollection($form);
+?>
+
+<?php print $this->form()->openTag($form) ?>
+<?php foreach ($elements as $element) : ?>
+    <?php if ($element instanceof Zend\Form\Element\Text) ://text element    ?>
+	<div class="form-group<?php if ($element->formElementErrors($element)) print ' has-error' ?>">
+	    <label class="control-label" for="<?php print $element->getName() ?>"><?php print $element->getLabel() ?></label>
+	    <div class="controls">
+		<?php print $this->formElement($element); ?>
+		<?php if ($this->formElementErrors($element)): ?>
+	    	<span class="help-block"><?php echo $this->formElementErrors($element) ?></span>
+		<?php endif; ?>
+	    </div>
+	</div>
+    <?php endif; ?>
+<?php endforeach; ?>
+
+<?php echo $this->form()->closeTag($form); ?>

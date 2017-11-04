@@ -1,0 +1,10 @@
+<?php
+
+$form = $this->form;
+$form->prepare();
+
+print $this->form()->openTag($form);
+print $this->formCollection($form);
+print $this->form()->closeTag();
+
+

@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * 
+ * placeholders
+ * 
+ * @var $title string
+ * @var $lead string
+ */
+
+$this->placeholder('title')->set($this->title);
+$this->placeholder('lead')->set($this->lead);
+
+//$form->setAttribute('action', $this->url('admin/role', array('action' => 'add', 'controller' => 'role')));
+$form = $this->form;
+$form->prepare();
+
+print $this->form()->openTag($form);
+print $this->formCollection($form);
+print $this->form()->closeTag();
+?>

@@ -1,0 +1,12 @@
+<?php
+
+$this->placeholder('sidebar')->captureStart();
+?>
+<h3>Menu:</h3>
+<ul class="nav nav-list">
+    <li><a class="" href="/currency/rates/view"><span class="glyphicon glyphicon-link"></span>link 1</a></li>
+</ul>
+<?php
+$this->placeholder('sidebar')->captureEnd();
+$this->placeholder('sidebar')->setPrefix("<aside>")->setIndent(0)->setPostfix("</aside>");
+?>

@@ -1,0 +1,36 @@
+<?php
+/**
+ * 
+ * placeholders
+ * 
+ * @var $title string
+ * @var $lead string
+ * @var $grid string
+ */
+$this->placeholder('title')->set($this->title);
+$this->placeholder('lead')->set($this->lead);
+?>
+<nav><?php
+    print $this->navigation()->menu()
+//		    ->setUlClass('nav nav-pills')
+	    ->setMinDepth(10)
+		    ->setMaxDepth(1)
+//		    ->setRenderParents(false)
+//		    ->setOnlyActiveBranch(true)
+    ?>
+</nav>
+<!-- BEGIN GRID -->
+<div class="grid-data-cont">
+<?php print $this->partial('partial/grid.phtml', array('grid' => $this->grid)); ?>
+</div>
+<!-- END GRID -->
+
+<!-- BEGIN PAGINATOR -->
+<div class="grid-pager-cont">
+<?php print $this->paginationControl($paginator, 'sliding', array('partial/paginator.phtml', 'index'), array('route' => 'admin/role'));  ?>
+</div>
+<!-- END PAGINATOR -->
+
+<!-- STYLE SHEETS -->
+<?php // print $this->headLink()->prependStylesheet($this->basePath() . '/css/theme/grid.css');  ?>
+<!-- jAVASCRIPT -->

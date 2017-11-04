@@ -1,0 +1,1 @@
+doctrine-module orm:generate-entities ./data/doctrine2/Entity  --generate-annotations="true" --generate-methods="true"

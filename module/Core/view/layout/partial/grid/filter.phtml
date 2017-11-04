@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * 
+ * @param $grid 
+ * 
+ * partial script
+ * partial/grid/grid.phtml
+ * 
+ */
+$form = $this->grid->getFeature('filter');
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+?>

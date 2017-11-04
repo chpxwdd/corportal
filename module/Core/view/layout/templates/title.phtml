@@ -1,0 +1,13 @@
+<?php
+
+if ($this->placeholder('title')):
+    print '<h1>';
+    print $this->placeholder('title');
+    if ($this->placeholder('lead')):
+	print ' <small>';
+	echo $this->placeholder('lead');
+	print '</small>';
+    endif;
+    print '<h1>';
+endif;
+?>

@@ -1,0 +1,23 @@
+<table id="tbl-menu" class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th width="20">&nbsp;</th>
+            <th>Позиция</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $rowNum = 1 ?>
+        <?php foreach ($content as $menu): ?>
+            <tr id="<?= $menu->getMenu() ?>">
+                <td><?= $rowNum ?></td>
+                <td><?= $menu->getTitle() ?></td>
+                <td><?= $menu->getPrice() ?></td>
+            </tr>
+        <?php $rowNum ++ ?>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<div class="text-center">
+    <?php  //print   $this->paginationControl($content, "sliding", array("partial/paginator.phtml", null), array("route" => "sodis/lunch/list")); ?>
+</div> 

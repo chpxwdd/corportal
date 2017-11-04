@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * 
+ * placeholders
+ * 
+ * @var $title string
+ * @var $lead string
+ * @var $grid string
+ */
+
+$pager = $this->paginationControl($this->paginator, 'Sliding', array('partial/paginator.phtml', 'index'), array(
+    'route' => 'admin/user',
+    'order_by' => $this->order_by,
+    'order' => $this->order));
+
+$widget = $this->partial('partial/grid.phtml', array(
+    'panel' => TRUE,
+    'grid' => $this->grid,
+    'pager' => $pager,
+    'order_by' => $this->order_by,
+    'order' => $this->order));
+
+
+//$toolbar = $this->partial('partial/toolbar.phtml', array(
+//    array('type' => 'btn', 'size' => null, 'wrapper' => TRUE, 'elements' => array(
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	)),
+//    array('type' => 'filter', 'size' => null, 'wrapper' => TRUE, 'elements' => array(
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	    array('color' => null, 'icon' => 'plus-sign', 'label' => FALSE),
+//	)),
+//	));
+
+$form = $this->form;
+$form->prepare();
+ 
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+
+print $widget;
+?>
+
+
+

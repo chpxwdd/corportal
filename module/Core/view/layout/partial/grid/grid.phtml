@@ -1,0 +1,71 @@
+
+<?php
+if (FALSE === $grid instanceof Core\Helper\Partial\Grid) :
+    return '';
+endif
+?>
+
+<?php if ($grid->getCaption()) : ?>
+    <div class="page-header">
+        <h4><?= $grid->getCaption() ?></h4>
+    </div>
+<?php endif; ?>
+
+<?php if ($grid->getActions()) : ?>
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group" role="group">
+	    <?php foreach ($grid->getActions() as $link): ?>
+		<?php print $link->render(); ?>
+	    <?php endforeach; ?>
+        </div>
+    </div>
+    <br/>
+<?php endif; ?>
+
+<?php if (FALSE == $grid->getRowset()): ?>
+    <div class='text-center'><span class="label label-danger">Нет данных</span></div>
+    <?php return; ?>
+<?php endif; ?>
+
+
+<table id="grid-<?= $id ?>" class="<?= $grid->getClass() ?>" >
+    <?php $headers = $grid->getHeaders(); ?>
+    <?php if (!empty($headers)): ?>
+        <thead>
+    	<tr>
+		<?php
+		if ($grid->getRowHeader() === TRUE):
+		    sprintf('<th class="text-muted" width="20">%s</th>', $rowHeaderCaption = NULL);
+		endif;
+
+		foreach ($headers as $header):
+		    if (is_array($header)):
+			print sprintf('<th>%s</th>', $header['title']);
+		    elseif (is_string($header)):
+			print sprintf('<th>%s</th>', $header);
+		    endif;
+		endforeach;
+		?>
+    	</tr>
+        </thead>
+    <?php endif; ?>
+    <tbody>
+	<?php foreach ($grid->getRowset() as $rowId => $rowData): ?>
+    	<tr id="<?= $rowId ?>">
+
+		<?php if ($grid->getRowHeader() === TRUE): ?>
+		    <th><small class="text-muted"><span class="glyphicon glyphicon-chevron-right"></span></small></th>
+		<?php endif; ?>
+
+		<?php foreach ($rowData as $cell): ?>
+		    <td><?= $cell ?></td>
+		<?php endforeach; ?>
+    	</tr>
+	<?php endforeach; ?>
+    </tbody>
+</table>
+<?php if (!empty($this->pager)): ?>
+    <div class="text-right"><?php print $this->pager; ?></div>
+<?php endif; ?>
+
+

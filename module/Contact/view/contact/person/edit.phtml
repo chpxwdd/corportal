@@ -1,0 +1,27 @@
+<div class='page-header'><h4>Анкета</h4></div>
+<?php
+//$personForm = $this->personForm;
+print $this->form()->openTag($this->personForm);
+print $this->formCollection($this->personForm);
+print $this->form()->closeTag();
+?>
+<div class='page-header'><h4>Телефоны</h4></div>
+<?
+//$phoneForm = $this->phoneForm;
+print $this->form()->openTag($this->phoneForm);
+print $this->formCollection($this->phoneForm);
+print $this->form()->closeTag();
+
+print $this->partial('partial/grid.phtml', array(
+  'panel' => FALSE,
+  'grid' => $this->gridPhones,
+  'order_by' => $this->order_by,
+  'order' => $this->order
+));
+?>
+<div class='page-header'><h4>Адреса</h4></div>
+<?php 
+print $this->formCollection($this->adressForm);
+
+?>
+

@@ -1,0 +1,18 @@
+<?php
+/**
+ * 
+ */
+?>
+<?php foreach ($this->flashMessages as $context => $messages): ?>
+    <div class="alert alert-<?php echo $context ?>">
+        <span class="pull-left">
+    	<span class="glyphicon glyphicon-bell"></span>
+        </span>
+        <ul class="list-unstyled">
+	    <?php foreach ($messages as $message): ?>
+		<li><?php echo $message ?></li>
+	    <?php endforeach ?>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+<?php endforeach ?>

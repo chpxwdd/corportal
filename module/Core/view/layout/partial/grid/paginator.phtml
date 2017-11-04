@@ -1,0 +1,28 @@
+
+<?php if ($this->pageCount): ?>
+    <!--<div class="container-fluid">-->
+    <ul class="pagination">
+        <li class="<?php print !isset($this->previous) ? 'disabled' : 'active'; ?>">
+    	<a href="<?php print $this->url($this->route, array('page' => $this->first, 'order_by' => $order_by, 'order' => $order)); ?>"><span class="glyphicon glyphicon-fast-backward"></span></a>
+        </li>
+        <li class="<?php print !isset($this->previous) ? 'disabled' : 'active'; ?>">
+    	<a href="<?php print $this->url($this->route, array('page' => $this->previous, 'order_by' => $order_by, 'order' => $order)); ?>"><span class="glyphicon glyphicon-step-backward"></span></a>
+        </li>
+	<?php foreach ($this->pagesInRange as $page): ?>
+	    <li class="<?php print $page == $this->current ? 'active' : 'item'; ?>">
+		<a href="<?php print $this->url($this->route, array('page' => $page, 'order_by' => $order_by, 'order' => $order)); ?>"><?php print $page; ?></a>
+	    </li>
+	<?php endforeach; ?>
+        <li class="<?php print !isset($this->next) ? 'disabled' : 'active'  ?>">
+    	<a href="<?php print $this->url($this->route, array('page' => $this->next, 'order_by' => $order_by, 'order' => $order)); ?>"><span class="glyphicon glyphicon-step-forward"></span></a>
+        </li>
+        <li class="<?php print !isset($this->next) ? 'disabled text-muted' : 'active'  ?>">
+    	<a href="<?php print $this->url($this->route, array('page' => $this->last, 'order_by' => $order_by, 'order' => $order)); ?>"><span class="glyphicon glyphicon-fast-forward"></span></a>
+        </li>
+    </ul>
+    <script type="text/javascript">
+        jQuery('.disabled').click(function () {
+    	return false;
+        });
+    </script>
+<?php endif; ?>

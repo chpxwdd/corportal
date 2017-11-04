@@ -1,0 +1,21 @@
+<nav id="tmpl-mainmenu">
+    <?php print $this->navigation('navigation')->menu()->setUlClass('list-unstyled tmpl-mainmenu')->setMinDepth(1)->setMaxDepth(1)->setOnlyActiveBranch(TRUE)->render();?>
+</nav>
+
+<script type="text/javascript">
+//    var mainmenu = $('nav#tmpl-mainmenu');
+//    mainmenu.find('ul li a').attr('onClick').val('javascript:void(0)');
+//    mainmenu.find('ul > li > a').prepend($('<span/>',{class:'glyphicon glyphicon-chevron-right', text:' '}));
+//    mainmenu.find('ul > li').click(function () { $(this).find('ul').show()});
+//    mainmenu.find('ul > li > ul').hide();
+</script>
+
+<style>
+    #tmpl-mainmenu ul, #tmpl-mainmenu ul li {list-style: none}
+    /*#tmpl-mainmenu > ul > li{line-height: 20px}*/
+    #tmpl-mainmenu > ul > li.active{}
+    #tmpl-mainmenu > ul > li > a {text-decoration: none}
+    #tmpl-mainmenu > ul > li > a > span{font-size: 8px; margin-right: 4px; top: 0px}
+    #tmpl-mainmenu > ul > li > ul {padding-left: 16px}
+    #tmpl-mainmenu > ul > li > ul > li > a > span{font-size: 8px; margin-right: 4px; top: 0px}
+</style>

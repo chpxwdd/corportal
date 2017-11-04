@@ -1,0 +1,17 @@
+<ul class="list-inline">
+    <?php foreach ($this->container as $page): ?>
+        <?php $hasChildren = $page->hasPages(); ?>
+        <?php if (!$hasChildren): ?>
+            <li><a href="<?= $page->getHref(); ?>"><?= $page->getLabel(); ?></a></li>
+        <?php else: ?>
+            <li>
+                <a href="<?= $page->getHref(); ?>"><?= $page->getLabel(); ?></a>
+                <ul>
+                    <?php foreach ($page->getPages() as $child): ?>
+                        <li><a href="<?= $child->getHref(); ?>"><?= $child->getLabel(); ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>

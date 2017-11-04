@@ -1,0 +1,21 @@
+    
+<?php
+
+$mainmenu = (string) '';
+foreach ($this->container as $page):
+    $hasChildren = $page->hasPages();
+    $items = (string) '';
+    $subitems = (string) '';
+    
+    if ($hasChildren):
+	foreach ($page->getPages() as $child):
+	    $subitems .= sprintf("<ul class='nav nav-pills'>%s</ul>", sprintf("<li><a href='%s'>%s</a></li>", $child->getHref(), $child->getLabel()));
+	endforeach;
+    endif;
+    
+    $item = sprintf("<li class='list-group-item'><a href='%s'>%s</a></li>", $page->getHref(), $page->getLabel(), $subitems);
+    $mainmenu .= $item;
+endforeach;
+
+print "<ul class='list-group'>$mainmenu</ul>";
+?>
